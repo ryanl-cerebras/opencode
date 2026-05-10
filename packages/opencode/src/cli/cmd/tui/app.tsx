@@ -103,6 +103,7 @@ const appBindingCommands = [
   "app.toggle.file_context",
   "app.toggle.diffwrap",
   "app.toggle.paste_summary",
+  "app.toggle.clear_prompt_history",
   "app.toggle.session_directory_filter",
 ] as const
 
@@ -755,6 +756,17 @@ function App(props: { onSnapshot?: () => Promise<string[]> }) {
             kv.set("paste_summary_enabled", next)
             return next
           })
+          dialog.clear()
+        },
+      },
+      {
+        name: "app.toggle.clear_prompt_history",
+        title: kv.get("clear_prompt_save_history", false)
+          ? "Don't include cleared prompts in history"
+          : "Include cleared prompts in history",
+        category: "System",
+        run: () => {
+          kv.set("clear_prompt_save_history", !kv.get("clear_prompt_save_history", false))
           dialog.clear()
         },
       },
