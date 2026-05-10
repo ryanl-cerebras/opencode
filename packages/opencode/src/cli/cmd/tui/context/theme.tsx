@@ -962,6 +962,8 @@ function getSyntaxRules(theme: Theme) {
       style: {
         foreground: theme.markdownHeading,
         bold: true,
+        italic: true,
+        underline: true,
       },
     },
     {
@@ -1175,6 +1177,7 @@ function getSyntaxRules(theme: Theme) {
       scope: ["markup.strikethrough"],
       style: {
         foreground: theme.textMuted,
+        strikethrough: true,
       },
     },
     {
